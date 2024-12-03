@@ -4,9 +4,6 @@ import errors from '../middlewares/errorHandler.js';
 
 export const registerUser = async (req, res) => {
   const { username, firstName, lastName, email, password } = req.body;
-  if (password.length < 6) {
-    return errors.e400(req, res, { message: 'Password must be at least 6 characters long.' });
-  };
 
   const saltRounds = 10;
   try {
