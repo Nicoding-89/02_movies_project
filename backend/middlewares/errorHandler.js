@@ -13,6 +13,13 @@ const errors = {
       message: error.message || 'The requested resource could not be found.'
     });
   },
+  e409: (req, res, error) => {
+    res.status(409).json({
+      status: 409,
+      error: 'Conflict.',
+      message: error.message || 'The resource already exists.'
+    });
+  },
   e500: (req, res, error) => {
     res.status(500).json({
       status: 500,

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { pool } from './config/db.config.js';
+import usersRoutes from './routes/users.route.js'
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -17,9 +18,9 @@ app.use(cors({
   methods: 'GET,POST'
 }));
 
-app.get('/', (req, res) => {
-  res.send('Wena compare')
-});
+// Routes
+
+app.use('/api', usersRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
